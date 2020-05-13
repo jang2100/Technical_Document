@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Cloud System</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+
+  <!-- Custom styles for this template -->
+  <link href="css/grayscale.min.css" rel="stylesheet">
+
+  <style>
+
+    .features-icons {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+   }
+
+    .features-icons .features-icons-item {
+    max-width: 20rem;
+   }
+
+    .features-icons .features-icons-item .features-icons-icon {
+     height: 7rem;
+   }
+
+    .features-icons .features-icons-item .features-icons-icon i {
+     font-size: 4.5rem;
+   }
+
+    .features-icons .features-icons-item:hover .features-icons-icon i {
+     font-size: 5rem;
+    }
+    .project-item {
+      font-size: 1rem;
+      color : white;
+      padding: 20px;
+    }    
+    .pinkstyle {
+        color: white;font-size:70px;    
+    }
+    .price-item-button {
+    padding: .5rem 2rem;
+    font-size: 1.25rem;
+    line-height: 1.3;
+    border-radius: .6rem;
+    color: white;
+    background-color: #0B4C5F;
+    background-image: none;
+    border-color: white;
+    margin-top: 25px;
+    }
+    .price-title {
+      text-align: center;
+      font-size: 3.5rem;
+      font-weight: bold;
+      padding: 10px;
+      
+    }
+    .price-detail {
+     font-weight: bold;
+    }
+
+    .page-header .content-center {
+      margin-top: 85px;
+    }
+
+    .moving-clouds {
+      position: absolute;
+      z-index: 1;
+      bottom: 0;
+      left: 0;
+      width: 250.625em;
+      height: 43.75em;
+      -webkit-animation: cloudLoop 80s linear infinite;
+      animation: cloudLoop 80s linear infinite;
+    }
+
+    @keyframes cloudLoop {
+      0% {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+      }
+      100% {
+        -webkit-transform: translate3d(-50%, 0, 0);
+        transform: translate3d(-50%, 0, 0);
+      }
+    }
+    .btn {
+      box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
+      padding: 1.25rem 2rem;
+      font-family: 'Varela Round';
+      font-size: 80%;
+      text-transform: uppercase;
+      letter-spacing: .15rem;
+      border: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-primary {
+      background-color: #64a19d;
+    }
+
+    .btn-primary:hover {
+      background-color: #4f837f;
+    }
+
+    .btn-primary:focus {
+      background-color: #4f837f;
+      color: white;
+    }
+
+    .btn-primary:active {
+      background-color: #467370 !important;
+    }
+
+  </style>
+
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <div>
+      <img style="max-width:45px; margin-top: -13px;" src="img/av.png">
+      <a class="navbar-brand js-scroll-triggerlign" href="#page-top">Cloud System</a>
+      </div>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars"></i>
+        </button>
+
+      <div class="collapse navbar-collapse offset" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#" onclick="alert('로그인 후 이용 가능합니다.');" href="#board">Board</a>
+          </li>  
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#projects">Product</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" data-toggle="modal" data-target="#Modal_Signup">Sign UP</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" data-toggle="modal" data-target="#Modal_Login">Login</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+      <!-- Modal Container 1 -->
+      <div class="container">
+        <!-- Login Modal 위에서 연결링크를 설정하였으므로 트리거 버튼부분 삭제 -->
+        <div class="modal fade" id="Modal_Login" role="dialog">
+            <div class="modal-dialog">
+    
+            <!-- Modal content -->
+            <div class="modal-content">
+    
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">User Login</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>             
+            </div>
+    
+            <!-- Modal Body Login Container -->
+            <div class="modal-body">
+            <div class="container">
+            <form action="./php/login.php" method="POST" name="login-form">
+                <div class="form-group row">
+                    <div class="col-xs-6">
+                    <label for="ID1">ID</label>
+                    <input id="ID1" class="form-control" autocomplete="off" type=text size="25" placeholder="User ID" required name="login_id" autofocus>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-xs-6">
+                    <label for="PW1">Password</label>
+                    <input id="PW1" class="form-control" autocomplete="off" type=password size="25" placeholder="User Password" name="login_pw" required>
+                    </div>
+                </div>    
+            </div>
+            </div>
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+            </form>
+    
+            </div>
+            </div>
+        </div>
+        </div>
+
+  <!-- SignUP Modal Container -->
+  <div class="container">
+    <div class="modal fade" id="Modal_Signup" role="dialog">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+        <div class="modal-header">
+            <h4 class="modal-title">SIGN UP</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <div class="modal-body">
+        <div class="container">
+        <form class="form-horizontal" action="./php/signup.php" method="POST" name="signup-form"> 
+            <div class="form-group">
+                <label style="text-align:left" for="id" class="col-sm-2 control-label">USER ID</label>
+                <div class="col-sm-6">
+                    <input class="form-control" name="id" id="id" maxlength="20" type="text" autofocus placeholder="User ID Here" required autocomplete="off" >
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label style="text-align:left" for="pw" class="col-sm-2 control-label">USER PW</label>
+                <div class="col-sm-6">
+                    <input class="form-control" name="pw" id="pw" maxlength="30" type="password" placeholder="User Password Here" required autocomplete="off" >
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label style="text-align:left" for="pw2" class="col-sm-2 control-label">RE-ENTER PW</label>
+                <div class="col-sm-6">
+                    <input class="form-control" name="pw2" id="pw2" maxlength="30" type="password" placeholder="User Repeat Password Here" required autocomplete="off" >
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label style="text-align:left" for="name" class="col-sm-2 control-label">NAME</label>
+                <div class="col-sm-6">
+                    <input class="form-control" name="name" id="name" maxlength="20" type="text" placeholder="User Name Here" required autocomplete="off" >
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label style="text-align:left" for="phone" class="col-sm-2 control-label">PHONE</label>
+                <div class="col-sm-6">
+                    <input class="form-control" name="phone" id="phone" maxlength="50" type="text" placeholder="User Phone Number Here" required autocomplete="off" >
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label style="text-align:left" for="addr" class="col-sm-2 control-label">ADDRESS</label>
+                <div class="col-sm-6">
+                    <input class="form-control" name="addr" id="addr" maxlength="50" type="text" placeholder="User Address Here" required autocomplete="off" >
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label style="text-align:left" for="mail" class="col-sm-2 control-label">E-Mail</label>
+                <div class="col-sm-6">
+                    <input class="form-control" name="mail" id="mail" maxlength="50" type="email" placeholder="User E-Mail Address Here" required autocomplete="off" >
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-default">SIGN UP</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">CANCEL</button>
+        </div>
+        </form>
+        </div>
+        </div>
+    </div>
+  </div>      
+
+  <!-- Header -->
+  <header class="masthead">
+    <div class="container d-flex h-100 align-items-center">
+      <div class="mx-auto text-center">
+        <img src="img/av.png" class="img-fluid" alt="">
+        <h1 class="mx-auto my-0 text-uppercase">Cloud System</h1>
+        <h2 class="text-white-50 mx-auto mt-2 mb-5">The World's Leading Cloud System Company.</h2>
+        <div class="moving-clouds" style="background-image: url('img/clouds.png'); "></div>
+        <a href="#about" class="btn btn-primary js-scroll-trigger">Get Started</a>
+      </div>
+    </div>   
+  </header>
+
+ <!-- About Section -->
+ <section id="about" class="bg-light about-section text-center">
+  <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="project-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+            <div class="features-icons-icon d-flex">
+              <i class="fas fa-cloud m-auto text-primary pinkstyle" aria-hidden="true"></i>                                    
+            </div>
+            <br>
+            <h3>Cloud Service</h3>
+            <p>저렴한 비용으로<br>체계적인 고객관리와<br>영업관리의 기반 마련</p>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <div class="project-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+              <i class="fas fa-database m-auto text-primary pinkstyle" aria-hidden="true"></i> 
+            </div>
+            <br>
+            <h3>Package Solution</h3>
+            <p>표준화된 Process<br>적용으로 빠르고<br>안정적인 시스템 구축</p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="project-item mx-auto mb-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                  <i class="fas fa-building m-auto text-primary pinkstyle" aria-hidden="true"></i> 
+            </div>
+            <br>
+            <h3>Enterprise Sales Portal</h3>
+            <p>산업별로 특화된<br>솔루션을 통해 도입사에<br>최적화된 시스템 구축</p>
+          </div>
+        </div>
+      </div>
+  </div>
+  <img src="img/ipad.png" class="img-fluid" alt="">
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="projects-section bg-light">
+    <div class="container">
+      <div class="pb-85px text-center">
+        <h2 class="price-title">Pricing</h2>
+        <br>
+        <br>
+        <p class="section-intro__subtitle">choice for your table</p>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+          <div class="card text-center card-pricing">
+            <div class="card-pricing__header">
+              <h2><i class="fas fa-check-circle"></i>Basic</h2><br>
+              <h1 class="card-pricing__price price-detail"><i class="fas fa-won-sign"></i>45,000<h4>/월</h4></h1>
+            </div>
+            <br>
+            <div class="card-pricing__header text-center">
+              <ui>CPU   2/4vCore<ui><br>
+              <ui>Memory 8GB</ui><br>
+              <ui>100 GB of storage (SSD)</ui><br>
+              <ui>Traffic 1TB</ui><br>
+            </div>
+            <div class="card-pricing__footer">
+              <button class="price-item-button button-light">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+          <div class="card text-center card-pricing">
+            <div class="card-pricing__header">
+              <h2><i class="fas fa-check-circle"></i>Standard</h2><br>
+              <h1 class="card-pricing__price price-detail"><i class="fas fa-won-sign"></i>80,000<h4>/월</h4></h1>
+            </div>
+            <br>
+            <div class="card-pricing__header text-center">
+              <ui>CPU   4/8vCore<ui><br>
+              <ui>Memory 8GB</ui><br>
+              <ui>200 GB of storage (SSD)</ui><br>
+              <ui>Traffic 1TB</ui><br>
+            </div>
+            <div class="card-pricing__footer">
+              <button class="price-item-button button-light">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+          <div class="card text-center card-pricing">
+            <div class="card-pricing__header">
+              <h2><i class="fas fa-check-circle"></i>Professional</h2><br>
+              <h1 class="card-pricing__price price-detail"><i class="fas fa-won-sign"></i>200,000<h4>/월</h4></h1>
+            </div>
+            <br>
+            <div class="card-pricing__header text-center">
+              <ui>CPU   8/12vCore<ui><br>
+              <ui>Memory 16GB</ui><br>
+              <ui>300 GB of storage (SSD)</ui><br>
+              <ui>Traffic 1TB</ui><br>
+            </div>
+            <div class="card-pricing__footer">
+              <button class="price-item-button button-light">Buy Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+ 
+  <section id="contact" class="signup-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-lg-8 mx-auto text-center">
+
+          <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
+          <h2 class="text-white mb-5">Subscribe to Receive Advice!</h2>
+
+          <form class="form-inline d-flex">
+            <input type="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" placeholder="Enter email address...">
+            <button type="submit" class="btn btn-primary mx-auto">Subscribe</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section bg-black">
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-md-4 mb-3 mb-md-0">
+          <div class="card py-4 h-100">
+            <div class="card-body text-center">
+              <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+              <h4 class="text-uppercase m-0">Address</h4>
+              <hr class="my-4">
+              <div class="small text-black-50">300, CloudTower, Dongjak-gu, Seoul, 06928, Rep. of KOREA</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-3 mb-md-0">
+          <div class="card py-4 h-100">
+            <div class="card-body text-center">
+              <i class="fas fa-envelope text-primary mb-2"></i>
+              <h4 class="text-uppercase m-0">Email</h4>
+              <hr class="my-4">
+              <div class="small text-black-50">
+                <a href="#">CSAdmin@cloudsystem.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-3 mb-md-0">
+          <div class="card py-4 h-100">
+            <div class="card-body text-center">
+              <i class="fas fa-mobile-alt text-primary mb-2"></i>
+              <h4 class="text-uppercase m-0">Phone</h4>
+              <hr class="my-4">
+              <div class="small text-black-50">+82 (02) 123-4567</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="social d-flex justify-content-center">
+        <a href="#" class="mx-2">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#" class="mx-2">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="#" class="mx-2">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black small text-center text-white-50">
+    <div class="container">
+      상호 : (주) CloudSystem<br>
+      대표이사 : 김유한 ,  장준형 , 전재현<br>
+      사업자등록번호 : 123-4567-8901<br>
+      Copyright &copy; 2020 Cloud System. All Rights Reserved
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/grayscale.min.js"></script>
+
+</body>
+
+</html>
