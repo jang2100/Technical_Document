@@ -1,0 +1,146 @@
+!
+hostname Core
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no aaa new-model
+memory-size iomem 5
+no ip icmp rate-limit unreachable
+ip cef
+ip tcp synwait-time 5
+!
+!
+!
+!
+no ip domain lookup
+!         
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+username jang2100 privilege 15 secret 5 $1$FjHy$hXark0h7bUsov2qJbDq7b0
+!         
+! 
+!
+!
+!
+!
+!
+interface Loopback1
+ ip address 55.55.55.55 255.255.255.255
+!
+interface FastEthernet0/0
+ description ##DSW1_Core_Connect##
+ ip address 172.1.1.1 255.255.255.252
+ ip nat inside
+ ip virtual-reassembly
+ ip ospf network point-to-point
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/1
+ description ##DSW2_Core_Connect##
+ ip address 172.1.2.1 255.255.255.252
+ ip nat inside
+ ip virtual-reassembly
+ ip ospf network point-to-point
+ duplex auto
+ speed auto
+!
+interface FastEthernet1/0
+ description ##DSW3_Core_Connect##
+ ip address 172.1.3.1 255.255.255.252
+ ip nat inside
+ ip virtual-reassembly
+ ip ospf network point-to-point
+ shutdown
+ duplex auto
+ speed auto
+!
+interface FastEthernet2/0
+ ip address dhcp
+ ip nat outside
+ ip virtual-reassembly
+ duplex auto
+ speed auto
+!
+!
+router ospf 1
+ router-id 55.55.55.55
+ log-adjacency-changes
+ passive-interface FastEthernet2/0
+ network 172.1.1.0 0.0.0.3 area 0
+ network 172.1.2.0 0.0.0.3 area 0
+ network 172.1.3.0 0.0.0.3 area 0
+ default-information originate always
+!
+!
+!
+no ip http server
+no ip http secure-server
+ip nat inside source list inside interface FastEthernet2/0 overload
+ip nat inside source static 100.100.100.1 interface FastEthernet2/0
+!
+ip access-list standard inside
+ permit 10.1.1.0 0.0.0.255
+ permit 10.1.2.0 0.0.0.255
+ permit 192.99.99.0 0.0.0.255
+ permit 172.1.1.0 0.0.0.3
+ permit 172.1.2.0 0.0.0.3
+ permit 172.1.3.0 0.0.0.3
+!
+no cdp log mismatch duplex
+!         
+!         
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ password cisco
+ logging synchronous
+ login
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ password cisco
+ login local
+ transport input telnet
+!
+!
+end

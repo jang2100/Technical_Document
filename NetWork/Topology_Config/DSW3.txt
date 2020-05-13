@@ -1,0 +1,276 @@
+!
+hostname DSW3
+!
+boot-start-marker
+boot-end-marker
+!
+!
+logging discriminator EXCESS severity drops 6 msg-body drops EXCESSCOLL 
+logging buffered 50000
+logging console discriminator EXCESS
+!
+username jang2100 privilege 15 secret 5 $1$6KUe$jbI7x6tkkpTDv85pFs0/D0
+no aaa new-model
+!
+!         
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+no ip domain-lookup
+no ip cef
+no ipv6 cef
+!
+!
+!
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+spanning-tree backbonefast
+spanning-tree vlan 10,20 priority 8192
+spanning-tree vlan 50 priority 12288
+spanning-tree vlan 99 priority 4096
+!
+vlan internal allocation policy ascending
+!
+track 1 interface Ethernet2/3 line-protocol
+!         
+track 2 ip sla 1 reachability
+!
+ip tcp synwait-time 5
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback1
+ ip address 33.33.33.33 255.255.255.255
+!
+interface Port-channel3
+ description ##DSW3_DMZ-SW2_Connect##
+ switchport trunk allowed vlan 99
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface Port-channel7
+ description ##DSW3_DMZ-Sw1_Connect##
+ switchport trunk allowed vlan 50
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface Port-channel12
+ description ##DSW3_ASW1_Connect##
+ switchport trunk allowed vlan 10,20
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface Port-channel22
+ description ##DSW3_ASW2_Connect##
+ switchport trunk allowed vlan 10,20
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface Port-channel31
+ description ##DSW1_DSW3_EtherChannel##
+ switchport trunk allowed vlan 10,20,50,99
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface Port-channel33
+ description ##DSW2_DSW3_EtherChannel##
+ switchport trunk allowed vlan 10,20,50,99
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface Ethernet0/0
+ description ##DSW1_DSW3_EtherChannel##
+ switchport trunk allowed vlan 10,20,50,99
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 31 mode active
+!
+interface Ethernet0/1
+ shutdown
+!
+interface Ethernet0/2
+ description ##DSW2_DSW3_EtherChannel##
+ switchport trunk allowed vlan 10,20,50,99
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 33 mode active
+!         
+interface Ethernet0/3
+ description ##DSW2_DSW3_EtherChannel##
+ switchport trunk allowed vlan 10,20,50,99
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 33 mode active
+!
+interface Ethernet1/0
+ description ##DSW3_DMZ-SW2_EtherChannel##
+ switchport trunk allowed vlan 99
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 3 mode active
+!
+interface Ethernet1/1
+ description ##DSW3_DMZ-SW2_EtherChannel##
+ switchport trunk allowed vlan 99
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 3 mode active
+!
+interface Ethernet1/2
+ shutdown 
+!         
+interface Ethernet1/3
+ shutdown
+!
+interface Ethernet2/0
+ description ##DSW1_DSW3_EtherChannel##
+ switchport trunk allowed vlan 10,20,50,99
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 31 mode active
+!
+interface Ethernet2/1
+ description ##DSW3_DMZ-SW1_EtherChannel##
+ switchport trunk allowed vlan 50
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 7 mode active
+!
+interface Ethernet2/2
+ description ##DSW3_DMZ-SW1_EtherChannel##
+ switchport trunk allowed vlan 50
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 7 mode active
+!         
+interface Ethernet2/3
+ description ##DSW3_Core_Uplink##
+ no switchport
+ ip address 172.1.3.2 255.255.255.252
+ ip ospf network point-to-point
+ duplex auto
+!
+interface Ethernet3/0
+ description ##DSW3_ASW1_EtherChannel##
+ switchport trunk allowed vlan 10,20
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 12 mode active
+!
+interface Ethernet3/1
+ description ##DSW3_ASW1_EtherChannel##
+ switchport trunk allowed vlan 10,20
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 12 mode active
+!
+interface Ethernet3/2
+ description ##DSW3_ASW2_EtherChannel##
+ switchport trunk allowed vlan 10,20
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 22 mode active
+!
+interface Ethernet3/3
+ description ##DSW3_ASW2_EtherChannel##
+ switchport trunk allowed vlan 10,20
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 22 mode active
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan10
+ description ##First_Backup##
+ ip address 10.1.1.253 255.255.255.0
+ ip helper-address 192.99.99.100 
+ vrrp 10 ip 10.1.1.254
+ vrrp 10 preempt delay minimum 30
+ vrrp 10 priority 90
+ vrrp 10 track 1 decrement 50
+ vrrp 10 track 2 decrement 50
+!
+interface Vlan20
+ description ##First_Backup##
+ ip address 10.1.2.253 255.255.255.0
+ ip helper-address 192.99.99.100 
+ vrrp 20 ip 10.1.2.254
+ vrrp 20 preempt delay minimum 30
+ vrrp 20 priority 90
+ vrrp 20 track 1 decrement 50
+ vrrp 20 track 2 decrement 50
+!
+interface Vlan50
+ description ##Secondary_Backup##
+ ip address 100.100.100.253 255.255.255.0
+ vrrp 50 ip 100.100.100.254
+ vrrp 50 preempt delay minimum 30
+ vrrp 50 priority 80
+!
+interface Vlan99
+ description ##Master##
+ ip address 192.99.99.253 255.255.255.0
+ vrrp 99 ip 192.99.99.254
+ vrrp 99 preempt delay minimum 30
+ vrrp 99 track 1 decrement 50
+ vrrp 99 track 2 decrement 50
+!
+router ospf 1
+ router-id 33.33.33.33
+ network 10.1.1.0 0.0.0.255 area 0
+ network 10.1.2.0 0.0.0.255 area 0
+ network 33.33.33.33 0.0.0.0 area 0
+ network 100.100.100.0 0.0.0.255 area 0
+ network 172.1.3.0 0.0.0.3 area 0
+ network 192.99.99.0 0.0.0.255 area 0
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+ip sla 1
+ icmp-echo 172.1.3.1 source-ip 33.33.33.33
+ frequency 5
+ip sla schedule 1 life forever start-time now
+!         
+!         
+!
+control-plane
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ password cisco
+ logging synchronous
+ login
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ password cisco
+ login local
+ transport input telnet
+!
+!
+end
